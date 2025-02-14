@@ -1,45 +1,123 @@
-import React from "react";
-
+import React, { useRef, useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
+// Array of property listings
 const listings = [
     {
         id: 1,
         title: "Apartment 1",
         location: "Wellawatte, Colombo",
         price: "3.5Mil",
-        image: "https://source.unsplash.com/random/400x300?apartment"
+        image: "/home1.png",
     },
     {
         id: 2,
         title: "Apartment 2",
         location: "Wellawatte, Colombo",
         price: "3.5Mil",
-        image: "https://source.unsplash.com/random/400x300?modern-house"
+        image: "/home2.png",
     },
     {
         id: 3,
         title: "Apartment 3",
         location: "Wellawatte, Colombo",
         price: "3.5Mil",
-        image: "https://source.unsplash.com/random/400x300?interior"
-    }
+        image: "/background.png",
+    },
 ];
 
 const Listing = () => {
+    const scrollRef = useRef(null);
+    const isDown = useRef(false);
+    const startX = useRef(0);
+    const scrollLeft = useRef(0);
+    const [isMobileView, setIsMobileView] = useState(window.innerWidth < 800);
+
+    // Update mobile view on resize
+    useEffect(() => {
+        const handleResize = () => setIsMobileView(window.innerWidth < 800);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    const handleMouseDown = (e) => {
+        isDown.current = true;
+        scrollRef.current.classList.add("cursor-grabbing");
+        startX.current = e.pageX - scrollRef.current.offsetLeft;
+        scrollLeft.current = scrollRef.current.scrollLeft;
+    };
+
+    const handleMouseLeave = () => {
+        isDown.current = false;
+        scrollRef.current.classList.remove("cursor-grabbing");
+    };
+
+    const handleMouseUp = () => {
+        isDown.current = false;
+        scrollRef.current.classList.remove("cursor-grabbing");
+    };
+
+    const handleMouseMove = (e) => {
+        if (!isDown.current) return;
+        e.preventDefault();
+        const x = e.pageX - scrollRef.current.offsetLeft;
+        const walk = (x - startX.current) * 2;
+        scrollRef.current.scrollLeft = scrollLeft.current - walk;
+    };
+
     return (
-        <div className="max-w-7xl mx-auto px-6 py-12 flex items-center">
-            {/* Left Section */}
-            <div className="w-1/3">
-                <h2 className="text-3xl font-semibold">Top Listings</h2>
-                <p className="text-gray-600 mt-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row items-center gap">
+            {/* Left Section - Title and description */}
+            <div className="w-full md:w-1/3 text-center md:text-left">
+                <h2 className="text-2xl sm:text-3xl font-semibold">Top Listings</h2>
+                <p className="text-gray-600 mt-2 text-sm sm:text-base">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                </p>
             </div>
 
-            {/* Right Section - Horizontal Scroll */}
-            <div className="w-2/3 overflow-hidden">
-                <div className="flex space-x-4 overflow-x-auto no-scrollbar">
+            {/* Right Section - Scrollable listings container */}
+            <div className="relative w-full md:w-6/8 lg:w-3/4">
+                {/* ✅ Container for the black box to prevent it from resizing */}
+                <div className="relative w-full h-[320px]">
+                {/* Black Background Box - Positioned behind the listings */}
+                <div className="absolute top-4 left-[10%] w-[70%] md:w-[65%] lg:w-[95%] h-5/5 bg-black rounded-2xl"></div>
+
+               
+                <div
+                    ref={scrollRef}
+                    className="relative flex space-x-4 overflow-x-auto no-scrollbar cursor-grab z-10 px-4 py-6"
+                    onMouseDown={handleMouseDown}
+                    onMouseLeave={handleMouseLeave}
+                    onMouseUp={handleMouseUp}
+                    onMouseMove={handleMouseMove}
+                >
+                    <style>
+                        {`
+                        .no-scrollbar::-webkit-scrollbar {
+                            display: none;
+                        }
+                        .cursor-grab {
+                            cursor: grab;
+                        }
+                        .cursor-grabbing {
+                            cursor: grabbing;
+                        }
+                        `}
+                    </style>
+
+                    {/* Listing Cards */}
                     {listings.map((listing) => (
-                        <div key={listing.id} className="min-w-[250px] bg-gray-100 rounded-xl shadow-lg overflow-hidden">
-                            <img src={listing.image} alt={listing.title} className="w-full h-40 object-cover" />
-                            <div className="p-4">
+                        <div
+                            key={listing.id}
+                            className={`flex-none bg-gray-100 rounded-xl shadow-lg overflow-hidden ${isMobileView ? "w-full snap-center" : "w-50 sm:w-50 md:w-72 lg:w-90"
+                                }`}
+                        >
+
+                            <img
+                                src={listing.image}
+                                alt={listing.title}
+                                className="w-full h-24 sm:h-32 md:h-40 lg:h-48 object-cover transition-all duration-300"/>
+
+                            <div className="p-4 bg-white">
                                 <h3 className="font-semibold">{listing.title}</h3>
                                 <p className="text-gray-500 text-sm">{listing.location}</p>
                                 <p className="text-lg font-bold">{listing.price}</p>
@@ -47,7 +125,17 @@ const Listing = () => {
                         </div>
                     ))}
                 </div>
+                </div>
+                <div className="relative mt-8 z-10 flex justify-end">
+                    <Link to="/apartment">
+                        <button className="px-6 py-2 bg-transparent text-black border border-none rounded-lg">
+                            Explore More →
+                        </button>
+                    </Link>
+                </div>
+
             </div>
+            
         </div>
     );
 };

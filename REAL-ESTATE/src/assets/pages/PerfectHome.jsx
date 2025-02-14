@@ -25,16 +25,18 @@ const PerfectHome = () => {
 
           {/* Content */}
           
-          <div className="relative z-10 flex flex-col xl:flex-row xl:max-w-[1500px] items-center justify-center h-screen px-30 mt-10 lg:mt-0 bg-black lg:mr-31">
+          <div className="relative z-10 flex flex-col xl:flex-row xl:max-w-[1500px] items-center justify-center h-screen px-35 mt-10 lg:mt-0  lg:mr-31 ">
               {/* Left Side - Title */}
-              <div className="text-white text-center  mb-6 lg:mb-0 whitespace-nowrap min-w-fit ml-auto lg:ml-0 ">
-                  <h1 className="text-4xl font-serif lg:ml-10">
+              <div className="self-start text-white mb-6 lg:mb-0 whitespace-nowrap min-w-fit text-left ml-0 lg:ml-[200px] mt-75">
+
+                  <h1 className="text-4xl font-serif">
                       Perfect <span className="italic text-gray-300">Home</span>
                   </h1>
               </div>
+
               {/* Right Side - Transparent Form */}
               
-              <div className="bg-white/20 backdrop-transparent-lg p-6 sm:p-8 md:p-8 rounded-lg shadow-lg lg:ml-[200px] lg:w-[500px] xl:w-[700px] text-white mb-6 lg:mb-0 mr-auto">
+              <div className="bg-white/20 backdrop-transparent-lg p-6 sm:p-6 md:p-8 rounded-lg shadow-lg lg:ml-[200px] lg:w-[500px] xl:w-[700px] text-white mb-6 lg:mb-0 mr-auto ">
                   <div className="flex w-30 bg-white/30 mb-10 p-1">
                       <button
                           className={`px-3 py-1 text-sm  ${activeTab === "Rent"
@@ -90,12 +92,14 @@ const PerfectHome = () => {
                   </form>
               </div>
           </div>
+          {/* need to fixe */}
           {/* Stats Section */}
           <div className="relative z-30 w-full">
-              <div className="absolute top-0 right-0 lg:w-[500px] xl:w-[700px]">
+              <div className="absolute top-0 right-0 lg:w-[400px] xl:w-[920px]">
                   <StatsSection />
               </div>
           </div>
+          <br/>
     </div>
   )
 }
