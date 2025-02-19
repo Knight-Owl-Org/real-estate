@@ -31,11 +31,41 @@ const properties = [
         size: "1300sq",
         image: "/p1.png",
     },
+    {
+        id: 4,
+        location: "Nawala, Colombo",
+        name: "Paragon Residencies",
+        price: "LKR 3.5Mil",
+        beds: 2,
+        baths: 1,
+        size: "1300sq",
+        image: "/p1.png", // Replace with actual image URL
+    },
+    {
+        id: 5,
+        location: "Nawala, Colombo",
+        name: "Paragon Residencies",
+        price: "LKR 3.5Mil",
+        beds: 2,
+        baths: 1,
+        size: "1300sq",
+        image: "/p1.png",
+    },
+    {
+        id: 6,
+        location: "Nawala, Colombo",
+        name: "Paragon Residencies",
+        price: "LKR 3.5Mil",
+        beds: 2,
+        baths: 1,
+        size: "1300sq",
+        image: "/p1.png",
+    },
 ];
 
 const PropertyList = () => {
     return (
-        <div className="w-full md:w-1/3 p-4">
+        <div className="w-full p-4 ml-6 border-r border-gray-300">
             <h2 className="text-gray-600 text-sm mb-4">More than 2k searches available</h2>
             <div className="space-y-4">
                 {properties.map((property) => (
