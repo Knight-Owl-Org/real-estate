@@ -92,10 +92,10 @@ const PerfectHome = () => {
                   </form>
               </div>
           </div>
-          {/* need to fixe */}
+          
           {/* Stats Section */}
-          <div className="relative z-30 w-full">
-              <div className="absolute top-0 right-0 lg:w-[400px] xl:w-[920px]">
+          <div className="relative z-30 w-full justify-end left-4">
+              <div className="absolute top-0 right-0">
                   <StatsSection />
               </div>
           </div>

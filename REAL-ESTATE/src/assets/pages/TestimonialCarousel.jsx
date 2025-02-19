@@ -44,10 +44,12 @@ const TestimonialCarousel = () => {
     }, [index]);
 
     return (
-        <div className="w-full flex flex-col items-center px-4 py-10 overflow-hidden">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-center">
+        <div className="w-full flex flex-col px-4 py-10 overflow-hidden lg:pl-40">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-left self-start">
                 What our customers have to say
             </h2>
+
+
 
             <div className="relative w-full max-w-6xl overflow-hidden">
                 <motion.div
@@ -68,21 +70,23 @@ const TestimonialCarousel = () => {
                 </motion.div>
             </div>
 
+            
             {/* Navigation Arrows */}
-            <div className="flex mt-6 space-x-4">
+            <div className="flex justify-center mt-6 space-x-4 w-full">
                 <button
-                    className="p-2 bg-gray-300 rounded-full hover:bg-gray-400 transition"
+                    className="p-1.5 bg-transparent border-2 border-gray-300 rounded-full hover:bg-gray-400 transition"
                     onClick={prevTestimonial}
                 >
                     ←
                 </button>
                 <button
-                    className="p-2 bg-gray-300 rounded-full hover:bg-gray-400 transition"
+                    className="p-1.5 bg-transparent border-2 border-gray-300 rounded-full hover:bg-gray-400 transition"
                     onClick={nextTestimonial}
                 >
                     →
                 </button>
             </div>
+
         </div>
     );
 };
