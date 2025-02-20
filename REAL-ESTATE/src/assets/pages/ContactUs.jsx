@@ -105,14 +105,23 @@ const ContactUs = () => {
                                 </div>
                                 <div className="flex flex-col">
                                     <label className="text-gray-700 text-sm">Contact Number / WhatsApp</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Enter Contact"
-                                        value={formData.contact}
-                                        onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
-                                        className="w-full p-2 border-b border-gray-300 focus:outline-none focus:border-black"
-                                        required
-                                    />
+                                        <input
+                                            type="text"
+                                            placeholder="Enter Contact"
+                                            value={formData.contact}
+                                            onChange={(e) => {
+                                                const inputVal = e.target.value.replace(/\D/g, ''); // Remove non-numeric characters
+                                                if (inputVal.length <= 10) {
+                                                    setFormData({ ...formData, contact: inputVal });
+                                                }
+                                            }}
+                                            className="w-full p-2 border-b border-gray-300 focus:outline-none focus:border-black"
+                                            maxLength="10"
+                                            required
+                                        />
+                                        {formData.contact.length > 0 && formData.contact.length !== 10 && (
+                                            <span className="text-red-500 text-sm mt-1">Mobile number should be 10 digits.</span>
+                                        )}
                                 </div>
                                 <div className="flex flex-col">
                                     <label className="text-gray-700 text-sm">Email</label>
@@ -129,7 +138,7 @@ const ContactUs = () => {
                                     <label className="text-gray-700 text-sm">Message</label>
                                     <input
 
-                                            type="email"
+                                            type="text"
                                             placeholder="Enter Email"
                                             value={formData.message}
                                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
