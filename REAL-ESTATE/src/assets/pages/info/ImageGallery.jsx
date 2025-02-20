@@ -41,7 +41,7 @@ export default function ImageGallery() {
                             className="w-full h-auto object-cover rounded-lg shadow-lg"
                         />
                         {/* Info Icons under the image */}
-                        <div className="flex items-center justify-center space-x-8 mt-4">
+                        <div className="flex items-center justify-center space-x-8 flex-wrap  mt-4">
                             {/* Bedrooms */}
                             <div className="flex items-center space-x-2">
                                 <img
@@ -85,7 +85,7 @@ export default function ImageGallery() {
                     </div>
 
                     {/* Thumbnail List */}
-                    <div className="flex flex-row md:flex-col gap-2 mt-4 md:mt-0">
+                    <div className="flex flex-row flex-wrap  md:flex-col gap-1  mt-4 md:mt-0">
                         {images.map((img, index) => (
                             <img
                                 key={index}
@@ -99,10 +99,11 @@ export default function ImageGallery() {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col items-center px-4 md:px-0 h-full">
-                <h1 className="text-[24px] md:text-[36px] font-[700] text-center text-[#141D31] mt-12 md:mt-51 mb-6 md:mb-25 font-merriweather">
-                    Your Destination
-                </h1>
+            <div className="flex flex-col items-start px-4 md:px-0 h-full ml-4">
+                <h3 className="text-2xl font-bold mb-8 justify-start mt-10">
+                    Property Details
+                </h3>
+                <p className="font-bold mb-8 justify-start ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit quidem eum culpa ipsa reiciendis eos, tempore tempora molestias. Necessitatibus, facilis magni totam voluptatem unde illo amet voluptas sed impedit voluptatum.</p>
                 <HotelMap />
             </div>
 

@@ -4,7 +4,7 @@ const HotelMap = () => {
     // Replace with your hotel's latitude and longitude
     const hotelLocation = { lat: 6.896785517218852, lng: 79.85648165028368 };
     return (
-        <div className="w-full h-[300px] md:h-[669px] mx-auto mb-[67px]">
+        <div className="w-full h-[300px] md:h-[669px] mx-auto mb-[67px] px-4">
             {/* Adjust height for mobile screens */}
             <MapContainer
                 center={[hotelLocation.lat, hotelLocation.lng]}
