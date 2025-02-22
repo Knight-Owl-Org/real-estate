@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../components/header';
+import Header from '../components/Header';
 import SearchForm from './info/SearchForm';
 import PropertyList from './info/PropertyList';
 import ImageGallery from './info/ImageGallery';
