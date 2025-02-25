@@ -27,7 +27,7 @@ const BoxesDisplay = () => {
     };
 
     return (
-        <div className="flex flex-col md:flex-row items-start px-6 md:px-18 py-15">
+        <div className="flex flex-col md:flex-row items-start px-6 md:px-18 py-15 mb-20">
             {/* FAQ Section */}
             <div className="w-full md:w-[60%] pr-5   md:pr-60 lg:pl-20">
                 {/* Title */}
@@ -57,7 +57,7 @@ const BoxesDisplay = () => {
                                 <span
                                     className={`ml-2 transition-transform  duration-300 ${openIndexes.includes(index) ? "rotate-180" : ""}`}
                                 >
-                                    ▼
+                                    ▽
                                 </span>
                             </summary>
 
@@ -72,7 +72,7 @@ const BoxesDisplay = () => {
             <div className="w-full md:w-[40%] flex justify-center md:justify-start max-w-[600px] lg:max-w-[700px]">
                 <div className="grid grid-cols-2 gap-2 md:gap-6 lg:gap-8">
                     {[0, 1, 2, 3].map((index) => {
-                        const colors = ["bg-[#6B4F3D]", "bg-[#211E1B]", "bg-[#2D6A4F]", "bg-[#8B5CF6]"]; // 4 unique colors
+                        const colors = ["bg-[#5F4932]", "bg-[#504739;]", "bg-[#0D0705;]", "bg-[#372415]"]; // 4 unique colors
                         return (
                             <div
                                 key={index}

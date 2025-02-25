@@ -7,7 +7,7 @@ import StatsSection from '../components/StatsSection';
 const PerfectHome = () => {
     const [activeTab, setActiveTab] = useState("Rent");
   return (
-      <div className="w-full flex flex-col overflow-x-hidden">
+      <div className="w-full flex flex-col overflow-x-hidden mb-20">
 
          <Header/>
           <div

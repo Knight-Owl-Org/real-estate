@@ -64,7 +64,7 @@ const Listing = () => {
     };
 
     return (
-        <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row items-center gap-6 overflow-hidden">
+        <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row items-center gap-6 overflow-hidden mb-20">
 
             <div className="relative w-full md:w-6/8 lg:w-3/4 min-w-0">
 

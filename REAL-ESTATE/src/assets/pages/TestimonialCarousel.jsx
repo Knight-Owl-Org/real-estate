@@ -44,7 +44,7 @@ const TestimonialCarousel = () => {
     }, [index]);
 
     return (
-        <div className="w-full flex flex-col px-4 py-10 overflow-hidden lg:pl-40">
+        <div className="w-full flex flex-col px-4 py-10 overflow-hidden lg:pl-40 mb-20">
             <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-left self-start">
                 What our customers have to say
             </h2>
@@ -63,7 +63,7 @@ const TestimonialCarousel = () => {
                             className="w-1/3 min-w-[30%] bg-gray-100 p-6 rounded-lg shadow-lg"
                         >
                             <p className="text-gray-700">{testimonial.text}</p>
-                            <div className="mt-4 text-yellow-500 flex justify-center">★★★★★</div>
+                            <div className="mt-4 text-yellow-500 flex justify-left">★★★★★</div>
                             <p className="mt-2 font-semibold">{testimonial.name}</p>
                         </div>
                     ))}
