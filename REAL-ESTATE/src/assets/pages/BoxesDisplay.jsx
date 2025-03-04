@@ -29,17 +29,17 @@ const BoxesDisplay = () => {
     return (
         <div className="flex flex-col md:flex-row items-start px-6 md:px-18 py-15 mb-20">
             {/* FAQ Section */}
-            <div className="w-full md:w-[60%] pr-5   md:pr-60 lg:pl-20">
+            <div className="w-full md:w-[60%] pr-5   md:pr-10 lg:pl-2">
                 {/* Title */}
-                <h2 className="text-2xl md:text-3xl font-semibold mb-10 ">The Value we give to you</h2>
+                <h2 className="text-2xl md:text-3xl font-semibold mb-10 text-black ">The Value we give to you</h2>
 
                 {/* FAQ Section */}
                 <div className=" mx-auto ">
                     {[
                         { question: "How do I know if I qualify for a mortgage?", answer: "Mortgage qualification depends on factors like your credit score, income, debt-to-income ratio, and down payment..." },
-                        { question: "What are the key factors to consider when buying a home?" },
-                        { question: "What are the costs involved in selling a property?" },
-                        { question: "How can I increase the value of my home before selling?" },
+                        { question: "What are the key factors to consider when buying a home?", answer: "Mortgage qualification depends on factors like your credit score, income, debt-to-income ratio, and down payment..." },
+                        { question: "What are the costs involved in selling a property?", answer: "Mortgage qualification depends on factors like your credit score, income, debt-to-income ratio, and down payment..." },
+                        { question: "How can I increase the value of my home before selling?" , answer: "Mortgage qualification depends on factors like your credit score, income, debt-to-income ratio, and down payment..."},
                     ].map((faq, index) => (
                         <details
                             key={index}
@@ -47,7 +47,7 @@ const BoxesDisplay = () => {
                             open={openIndexes.includes(index)}
                         >
                             <summary
-                                className="cursor-pointer text-lg font-bold list-none flex justify-between items-center"
+                                className="cursor-pointer text-black text-lg font-bold list-none flex justify-between items-center"
                                 onClick={(e) => {
                                     e.preventDefault(); // Prevent default <details> behavior
                                     handleToggle(index);

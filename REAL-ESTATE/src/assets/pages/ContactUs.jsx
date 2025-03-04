@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import loadingGif from "/loading.gif"; // Replace with the actual path to your loading GIF
+import { Phone, Mail } from "lucide-react"; // Import Lucide icons
 
 const ContactUs = () => {
     const [showPopup, setShowPopup] = useState(false);
@@ -159,11 +160,11 @@ const ContactUs = () => {
                     <div className="relative flex flex-col md:flex-row gap-20 w-full max-w-7xl z-10 p-10">
                         <div className="relative bg-black/40 p-6 rounded-xl flex flex-col items-center justify-between w-full max-w-sm">
                             <div className="bg-white/80 backdrop-blur-md rounded-lg p-6 flex flex-col items-center w-full">
-                                <div className="flex items-center justify-center w-full">
-                                    <div className="p-3 bg-gray-100 rounded-full flex-shrink-0">
-                                        <span role="img" aria-label="call">📞</span>
+                                <div className="flex items-start justify-start w-full">
+                                    <div className="p-3 text-black flex-shrink-0">
+                                        <Phone className="w-6 h-6" /> {/* Replace emoji with Lucide icon */}
                                     </div>
-                                    <div className="ml-4 text-center">
+                                    <div className="ml-4 text-start">
                                         <h3 className="text-lg font-medium">Call</h3>
                                         <p className="text-gray-600">0721526349</p>
                                     </div>
@@ -176,11 +177,11 @@ const ContactUs = () => {
 
                         <div className="relative bg-black/40 p-6 rounded-xl flex flex-col items-center justify-between w-full max-w-lg">
                             <div className="bg-white/80 backdrop-blur-md rounded-lg p-6 flex flex-col items-center w-full">
-                                <div className="flex items-center justify-center w-full">
-                                    <div className="p-3 bg-gray-100 rounded-full flex-shrink-0">
-                                        <span role="img" aria-label="email">📧</span>
+                                <div className="flex items-start justify-start w-full">
+                                    <div className="p-3 text-black flex-shrink-0">
+                                        <Mail className="w-6 h-6" /> {/* Replace emoji with Lucide icon */}
                                     </div>
-                                    <div className="ml-4 text-center">
+                                    <div className="ml-4 text-start">
                                         <h3 className="text-lg font-medium">Email</h3>
                                         <p className="text-gray-600">knightowl@gmail.com</p>
                                     </div>

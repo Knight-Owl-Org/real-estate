@@ -68,8 +68,8 @@ const Listing = () => {
 
             <div className="relative w-full md:w-6/8 lg:w-3/4 min-w-0">
 
-                <h2 className="text-2xl sm:text-3xl font-semibold">Top Listings</h2>
-                <p className="text-gray-600 mt-2 text-sm sm:text-base">
+                <h2 className="text-2xl sm:text-3xl font-semibold text-black">Top Listings</h2>
+                <p className="text-gray-600 mt-8 text-sm sm:text-base">
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                 </p>
             </div>
@@ -117,11 +117,14 @@ const Listing = () => {
                                     alt={listing.title}
                                     className="w-full h-24 sm:h-32  md:h-40 lg:h-48 object-cover transition-all duration-300"
                                 />
-                                <div className="p-4 bg-white ">
-                                    <h3 className="font-semibold">{listing.title}</h3>
-                                    <p className="text-gray-500 text-sm">{listing.location}</p>
-                                    <p className="text-lg font-bold">{listing.price}</p>
-                                </div>
+                                <div className="p-4 bg-[#D9D9D9]">
+                            <div className="flex justify-between">
+                                <h3 className="font-semibold text-black">{listing.title}</h3>
+                                <p className="text-lg font-bold text-black">{listing.price}</p>
+                            </div>
+                            <p className="text-gray-500 text-sm">{listing.location}</p>
+                        </div>
+
                             </div>
                         ))}
                     </div>
