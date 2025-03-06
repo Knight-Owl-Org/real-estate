@@ -68,7 +68,7 @@ const ContactUs = () => {
     };
 
     return (
-        <div className="w-full">
+        <div id="contact" className="w-full">
             <h2 className="text-2xl font-semibold text-black text-center py-6">
                 Contact Us
             </h2>
