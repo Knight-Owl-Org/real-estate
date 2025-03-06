@@ -27,16 +27,16 @@ const Header = () => {
                 className={`${menuOpen ? "block" : "hidden"
                     } absolute top-16 right-6 bg-white shadow-lg p-4 rounded-lg md:flex md:static md:bg-transparent md:shadow-none md:p-0 md:space-x-6`}
             >
-                <a href="#" className="block md:inline-block text-gray-900 hover:underline py-2">
+                <a href="/" className="block md:inline-block text-gray-900 hover:underline py-2">
                     Home
                 </a>
-                <a href="#" className="block md:inline-block text-gray-900 hover:underline py-2">
+                <a href="#listing" className="block md:inline-block text-gray-900 hover:underline py-2">
                     Listings
                 </a>
-                <a href="#" className="block md:inline-block text-black hover:underline py-2">
+                <a href="#value" className="block md:inline-block text-black hover:underline py-2">
                     Our Value
                 </a>
-                <a href="#" className="block md:inline-block text-gray-900 hover:underline py-2">
+                <a href="#contact" className="block md:inline-block text-gray-900 hover:underline py-2">
                     Contact us
                 </a>
             </nav>

@@ -27,7 +27,7 @@ const BoxesDisplay = () => {
     };
 
     return (
-        <div className="flex flex-col md:flex-row items-start px-6 md:px-18 py-15 mb-20">
+        <div id="value" className="flex flex-col md:flex-row items-start px-6 md:px-18 py-15 mb-20">
             {/* FAQ Section */}
             <div className="w-full md:w-[60%] pr-5   md:pr-10 lg:pl-2">
                 {/* Title */}
