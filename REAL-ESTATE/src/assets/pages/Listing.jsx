@@ -64,11 +64,11 @@ const Listing = () => {
     };
 
     return (
-        <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row items-center gap-6 overflow-hidden mb-20">
+        <div id="listing" className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row items-center gap-6 overflow-hidden mb-20">
 
             <div className="relative w-full md:w-6/8 lg:w-3/4 min-w-0">
 
-                <h2 className="text-2xl sm:text-3xl font-semibold text-black">Top Listings</h2>
+                <h2  className="text-2xl sm:text-3xl font-semibold text-black">Top Listings</h2>
                 <p className="text-gray-600 mt-8 text-sm sm:text-base">
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                 </p>
