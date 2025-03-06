@@ -9,9 +9,6 @@ const PerfectHome = () => {
 
             <Header />
 
-            {/* Overlay (Optional for dark effect) */}
-            <div className="absolute inset-0 bg-black/20"></div>
-
             {/* Content */}
             <div className="relative z-10 flex flex-col md:flex-row items-start justify-between h-screen px-4 md:px-8 lg:px-16 w-full max-w-[1500px] mx-auto md:mt-30">
             {/* Left Side - Title and Logo */}
