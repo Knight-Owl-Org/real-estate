@@ -41,8 +41,8 @@ const TestimonialCarousel = () => {
     }, [index]);
 
     return (
-        <div className="w-full flex flex-col px-20 py-10 overflow-hidden  mb-20">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-6 px-10 text-left self-start text-black">
+        <div className="w-full flex flex-col px-6 md:px-20 py-10 overflow-hidden mb-20 items-center justify-center min-h-screen">
+            <h2 className="text-xl md:text-3xl font-semibold mb-6 px-6 md:px-10 text-left self-start text-black">
                 What our customers have to say
             </h2>
             <div className="relative w-full max-w-6xl overflow-hidden">
@@ -54,7 +54,7 @@ const TestimonialCarousel = () => {
                     {extendedTestimonials.map((testimonial, i) => (
                         <div
                             key={i}
-                            className="w-1/3 min-w-[30%] bg-gray-100 p-6 rounded-xl shadow-lg flex flex-col h-[220px] md:h-[250px]"
+                            className="w-full md:w-1/3 min-w-[90%] md:min-w-[30%] bg-gray-100 p-6 rounded-xl shadow-lg flex flex-col h-[220px] md:h-[250px]"
                         >
                             <div className="flex-grow overflow-hidden">
                                 <p className="text-gray-700 line-clamp-4">{testimonial.text}</p>
