@@ -63,7 +63,7 @@ const BoxesDisplay = () => {
         <h2 className="text-2xl md:text-3xl font-semibold mb-10 text-black ">The Value we give to you</h2>
 
         {/* FAQ Section */}
-        <div className=" mx-auto ">
+        <div className=" mx-auto  ">
           {[
             {
               question: "How do I know if I qualify for a mortgage?",
@@ -110,7 +110,7 @@ const BoxesDisplay = () => {
 
       {/* Boxes Section (Right Side) */}
       <div className="w-full md:w-[40%] flex justify-center md:justify-start max-w-[600px] lg:max-w-[700px]">
-        <div className="grid grid-cols-2 gap-2 md:gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 gap-2 md:gap-6 lg:gap-8 ml-2 md:ml-16 lg:ml-32">
           {[0, 1, 2, 3].map((index) => {
             const colors = ["bg-[#5F4932]", "bg-[#504739;]", "bg-[#0D0705;]", "bg-[#372415]"] // 4 unique colors
             return (
