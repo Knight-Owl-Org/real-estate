@@ -25,6 +25,28 @@ const listings = [
     price: "3.5Mil",
     image: "/background.png",
   },
+  // Duplicate listings to create a seamless scrolling effect
+  {
+    id: 4,
+    title: "Apartment 1",
+    location: "Wellawatte, Colombo",
+    price: "3.5Mil",
+    image: "/home1.png",
+  },
+  {
+    id: 5,
+    title: "Apartment 2",
+    location: "Wellawatte, Colombo",
+    price: "3.5Mil",
+    image: "/home2.png",
+  },
+  {
+    id: 6,
+    title: "Apartment 3",
+    location: "Wellawatte, Colombo",
+    price: "3.5Mil",
+    image: "/background.png",
+  },
 ]
 
 const Listing = () => {
@@ -32,33 +54,90 @@ const Listing = () => {
   const isDown = useRef(false)
   const startX = useRef(0)
   const scrollLeft = useRef(0)
-  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 800)
+  const [isMobileView, setIsMobileView] = useState(false)
+  const [isUserInteracting, setIsUserInteracting] = useState(false)
+  const animationRef = useRef(null)
+  const scrollSpeed = isMobileView ? 1 : 2 // Slower speed for mobile view
 
+  // Set initial mobile view state on client side
   useEffect(() => {
+    setIsMobileView(window.innerWidth <= 800)
+
     const handleResize = () => setIsMobileView(window.innerWidth <= 800)
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
+  // Continuous scrolling animation
+  useEffect(() => {
+    const startScrollAnimation = () => {
+      if (!scrollRef.current || isUserInteracting) return
+
+      const animate = () => {
+        if (scrollRef.current) {
+          // Increment scroll position
+          scrollRef.current.scrollLeft += scrollSpeed
+
+          // Reset scroll position when reaching the end to create infinite loop effect
+          if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth - scrollRef.current.clientWidth - 10) {
+            scrollRef.current.scrollLeft = 0
+          }
+        }
+        animationRef.current = requestAnimationFrame(animate)
+      }
+
+      animationRef.current = requestAnimationFrame(animate)
+    }
+
+    startScrollAnimation()
+
+    // Cleanup animation on unmount
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current)
+      }
+    }
+  }, [isUserInteracting, scrollSpeed])
+
+  // Pause animation during user interaction and resume after
+  useEffect(() => {
+    if (isUserInteracting && animationRef.current) {
+      cancelAnimationFrame(animationRef.current)
+      animationRef.current = null
+    }
+  }, [isUserInteracting])
+
   const handleMouseDown = (e) => {
+    if (isUserInteracting) return; // Prevent changes
     isDown.current = true
-    scrollRef.current.classList.add("cursor-grabbing")
-    startX.current = e.pageX - scrollRef.current.offsetLeft
-    scrollLeft.current = scrollRef.current.scrollLeft
+    setIsUserInteracting(true)
+    if (scrollRef.current) {
+      scrollRef.current.classList.add("cursor-grabbing")
+      startX.current = e.pageX - scrollRef.current.offsetLeft
+      scrollLeft.current = scrollRef.current.scrollLeft
+    }
   }
 
   const handleMouseLeave = () => {
+    if (!isUserInteracting) return; // Prevent changes
     isDown.current = false
-    scrollRef.current.classList.remove("cursor-grabbing")
+    setIsUserInteracting(false)
+    if (scrollRef.current) {
+      scrollRef.current.classList.remove("cursor-grabbing")
+    }
   }
 
   const handleMouseUp = () => {
+    if (!isUserInteracting) return; // Prevent changes
     isDown.current = false
-    scrollRef.current.classList.remove("cursor-grabbing")
+    setIsUserInteracting(false)
+    if (scrollRef.current) {
+      scrollRef.current.classList.remove("cursor-grabbing")
+    }
   }
 
   const handleMouseMove = (e) => {
-    if (!isDown.current) return
+    if (!isDown.current || !scrollRef.current || isUserInteracting) return; // Prevent changes
     e.preventDefault()
     const x = e.pageX - scrollRef.current.offsetLeft
     const walk = (x - startX.current) * 2
@@ -67,20 +146,26 @@ const Listing = () => {
 
   // Add touch event handlers for mobile
   const handleTouchStart = (e) => {
+    if (isUserInteracting) return; // Prevent changes
     isDown.current = true
-    startX.current = e.touches[0].pageX - scrollRef.current.offsetLeft
-    scrollLeft.current = scrollRef.current.scrollLeft
+    setIsUserInteracting(true)
+    if (scrollRef.current) {
+      startX.current = e.touches[0].pageX - scrollRef.current.offsetLeft
+      scrollLeft.current = scrollRef.current.scrollLeft
+    }
   }
 
   const handleTouchMove = (e) => {
-    if (!isDown.current) return
+    if (!isDown.current || !scrollRef.current || isUserInteracting) return; // Prevent changes
     const x = e.touches[0].pageX - scrollRef.current.offsetLeft
     const walk = (x - startX.current) * 2
     scrollRef.current.scrollLeft = scrollLeft.current - walk
   }
 
   const handleTouchEnd = () => {
+    if (!isUserInteracting) return; // Prevent changes
     isDown.current = false
+    setIsUserInteracting(false)
   }
 
   return (
@@ -110,34 +195,32 @@ const Listing = () => {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
             style={{
-              scrollSnapType: "x mandatory",
-              scrollBehavior: "smooth",
               gap: "16px",
               width: "100%",
             }}
           >
             <style>
               {`
-                            .no-scrollbar::-webkit-scrollbar {
-                                display: none;
-                            }
-                            .no-scrollbar {
-                                -ms-overflow-style: none;
-                                scrollbar-width: none;
-                            }
-                            .cursor-grab {
-                                cursor: grab;
-                            }
-                            .cursor-grabbing {
-                                cursor: grabbing;
-                            }
-                            `}
+                .no-scrollbar::-webkit-scrollbar {
+                    display: none;
+                }
+                .no-scrollbar {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+                .cursor-grab {
+                    cursor: grab;
+                }
+                .cursor-grabbing {
+                    cursor: grabbing;
+                }
+              `}
             </style>
 
             {listings.map((listing, index) => (
               <div
-                key={listing.id}
-                className={`flex-none bg-gray-100 rounded-xl shadow-lg overflow-hidden snap-center ${
+                key={`${listing.id}-${index}`}
+                className={`flex-none bg-gray-100 rounded-xl shadow-lg overflow-hidden ${
                   isMobileView ? "w-[80%] sm:w-[70%] md:w-[60%]" : "w-60 sm:w-64 md:w-70 lg:w-80"
                 } ${index === 0 ? "ml-2" : ""} ${index === listings.length - 1 ? "mr-4" : "mr-4"}`}
               >
@@ -174,4 +257,3 @@ const Listing = () => {
 }
 
 export default Listing
-

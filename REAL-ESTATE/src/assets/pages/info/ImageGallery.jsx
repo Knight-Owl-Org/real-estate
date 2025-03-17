@@ -2,8 +2,8 @@ import { useState } from "react";
 import HotelMap from "./HotelMap";
 
 const images = [
-    "/p1.png",
     "/home1.png",
+    "/p1.png",
     "/home2.png",
     "/background.png",
 ];
@@ -38,7 +38,7 @@ export default function ImageGallery() {
                         <img
                             src={selectedImage}
                             alt="Main"
-                            className="w-full h-auto object-cover rounded-lg shadow-lg"
+                            className="w-full h-96 object-cover rounded-lg shadow-lg"
                         />
                         {/* Info Icons under the image */}
                         <div className="flex items-center justify-center space-x-8 flex-wrap  mt-4">
@@ -106,8 +106,6 @@ export default function ImageGallery() {
                 <p className="font-bold mb-8 justify-start ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit quidem eum culpa ipsa reiciendis eos, tempore tempora molestias. Necessitatibus, facilis magni totam voluptatem unde illo amet voluptas sed impedit voluptatum.</p>
                 <HotelMap />
             </div>
-
-
         </div>
     );
 }
